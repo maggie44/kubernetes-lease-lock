@@ -39,7 +39,7 @@ type Locker struct {
 // NewLocker creates a Locker.
 func NewLocker(
 	ctx context.Context,
-	client *kubernetes.Clientset,
+	client kubernetes.Interface,
 	name string,
 	holderIdentity string,
 	namespace string,
@@ -191,7 +191,7 @@ func (l *Locker) Lock(ctx context.Context) error {
 				if err != nil && !errors.Is(err, context.Canceled) {
 					// Logging here instead of using an error channel as we have returned
 					// from the broader function already to allow the user to continue.
-					slog.Error(err.Error())
+					slog.Error("error renewing lock", "error", err)
 
 					return
 				}
