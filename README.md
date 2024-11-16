@@ -1,6 +1,6 @@
 # kubernetes-lease-lock
 
-Golang implementation of a Kubernetes lease lock. See below, and/or `example` folder.
+Golang implementation of a Kubernetes lease lock with automatic renew and expiry. See below, and/or `example` folder.
 
 ```golang
 // `kubernetesClient` is a kubernetes clientset (*kubernetes.Clientset).
